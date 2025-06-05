@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+@layer theme, base, components, utilities;
+
+:root {
+  --background-color: #ffffff;
+}
+
+@theme {
+  --font-poppins: var(--font-poppins);
+  --font-pacificio: var(--font-pacificio);
+}
+
+@layer base {
+  html,
+  body {
+    background-color: var(--background-color);
+    width: 100%;
+  }
+}
+
+@layer components {
+  .header-btn {
+    @apply flex cursor-pointer items-center justify-center rounded-[999px] bg-black/30;
+  }
+
+  .hero-text {
+    @apply font-pacificio relative z-10 max-w-[40rem] text-center text-7xl leading-[6rem] font-semibold;
+  }
+}
+
+@layer utilities {
+  .text-primary {
+    color: #ffff;
+  }
+
+  .text-secondary {
+    color: #000;
+  }
+}
+
+.text-loader {
+  font-size: clamp(2rem, 10vw, 8rem);
+}
+
+.text-fluid {
+  font-size: clamp(2rem, 8vw, 4rem);
+}
+
+.bg-grow::before {
+  content: '';
+  position: absolute;
+  background: #fff;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: scaleX(0%);
+  border-radius: inherit;
+  transition: transform 0.5s ease;
+  transform-origin: left;
+}
+
+.bg-grow:hover::before {
+  transform: scaleX(100%);
+}
+
+.overlay::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .product-carousel {
+    overflow: hidden;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .product-carousel {
+    overflow-x: scroll;
+  }
+}
